@@ -1,0 +1,47 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    background-color: #ffffff;
+    opacity: 0.8;
+    background-image: linear-gradient(#ebfbff 2px, transparent 2px), linear-gradient(90deg, #ebfbff 2px, transparent 2px), linear-gradient(#ebfbff 1px, transparent 1px), linear-gradient(90deg, #ebfbff 1px, #ffffff 1px);
+    background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+}
+#output{
+    margin-top: 64px;
+}
+#outputbody{
+    background: white;
+    padding: 20px 30px;
+}
+
+#copynotification {
+    opacity: 0;
+}
+
+#copynotification.fade {
+    opacity: 100%;
+    animation: fade;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-duration: 1s;
+    animation-delay: 2s;
+}
+
+@keyframes fade {
+    from { opacity: 100%; }
+    to { opacity: 0%; }
+}

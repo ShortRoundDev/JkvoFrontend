@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">jkvo.xyz</h1>
+        </div>
+    </section>
+    <div class="columns is-centered">
+        <div class="column is-half is-centered columns">
+            <input class="input column is-primary is-full" placeholder="jkvo.xyz"/>
+        </div>
+    </div>
+    <div class="columns is-centered" id="output">
+        <div class="column is-two-thirds">
+            <div class="panel is-primary">
+                <div class="panel-heading">
+                    Shortlink
+                </div>
+                <a class="panel-block" id="outputbody" onclick="copyLink(event)">
+                    https://abc.def/ghi?jkl=mno#pqr
+                </a>
+                
+            </div>
+            <div class="notification is-success" id="copynotification">
+                Copied!
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
