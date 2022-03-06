@@ -13,7 +13,7 @@ def run(){
 }
 
 pipeline {
-    agent jkvo_staging_fe1
+    agent { node { jkvo_staging_fe1 } }
     stages {
         stage('Build'){
             buildRepo()
