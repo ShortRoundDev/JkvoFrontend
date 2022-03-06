@@ -31,7 +31,7 @@ pipeline {
                         -e Database__Host=staging.shortrounddev.com \
                         -e Database__Username=root \
                         -e Database__Shards=1 \
-                        -e Database__Password=$DB_Password \
+                        -e Database__Password=$DB_PASSWORD \
                         jkvo_fe'''
             }
         }
