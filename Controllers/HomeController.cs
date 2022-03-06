@@ -53,7 +53,9 @@ namespace JkvoXyz.Controllers
                 await _db.InsertShortCode(shortPath, url);
             }
 
-            return Json(shortPath.ToLower());
+            return Json(new {
+                Path = shortPath.ToLower()
+            });
         }
 
         public IActionResult Privacy()

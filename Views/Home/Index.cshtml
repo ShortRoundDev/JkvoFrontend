@@ -9,8 +9,13 @@
         </div>
     </section>
     <div class="columns is-centered">
-        <div class="column is-half is-centered columns">
-            <input class="input column is-primary is-full" placeholder="jkvo.xyz"/>
+        <div class="field has-addons column is-half is-centered columns">
+            <div class="control">
+                <input id="urlfield" class="input column is-primary is-full" placeholder="jkvo.xyz" />
+            </div>
+            <div class="control">
+                <a class="button is-primary" onclick="makeShortLink(event)">Go</a>
+            </div>
         </div>
     </div>
     <div class="columns is-centered" id="output">
@@ -20,15 +25,14 @@
                     Shortlink
                 </div>
                 <a class="panel-block" id="outputbody" onclick="copyLink(event)">
-                    https://abc.def/ghi?jkl=mno#pqr
+                    https://jkvo.xyz
                 </a>
-                
             </div>
-            <div class="notification is-success" id="copynotification">
-                Copied!
+            <div class="columns is-centered">
+                <div class="notification is-success column is-one-third is-centered" id="copynotification">
+                    <center>Copied!</center>
+                </div>
             </div>
         </div>
-        
     </div>
-    
 </div>

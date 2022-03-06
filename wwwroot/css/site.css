@@ -28,6 +28,10 @@ body {
     padding: 20px 30px;
 }
 
+#outputbody:hover {
+  background: #c0f1e2
+}
+
 #copynotification {
     opacity: 0;
 }
