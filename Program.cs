@@ -2,7 +2,6 @@ using System;
 using System.Data.Common;
 using JkvoXyz.Config;
 using JkvoXyz.Data;
-using MySql.Data;
 
 namespace JkvoXyz {
     public class Program
@@ -13,27 +12,27 @@ namespace JkvoXyz {
 
             var configBuilder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
+#if DEBUG
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+#else
+                .AddEnvironmentVariables();
+#endif
 
             var config = configBuilder.Build();
-
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped<IDbShard>(provider =>
             {
-#if DEBUG
                 var dbConfig = new FullDbConfig();
                 config.GetSection("Database").Bind(dbConfig);
+
                 return new MySqlShard(
                     dbConfig.Host,
                     dbConfig.Database,
                     dbConfig.Username,
                     dbConfig.Password
                 );
-#else
-                return new MySqlShard();
-#endif
             });
 
             var coreDbConfig = new CoreDbConfig();
@@ -52,6 +51,8 @@ namespace JkvoXyz {
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.Urls.Add("http://*:5001");
 
             app.UseRouting();
 
