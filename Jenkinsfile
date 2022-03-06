@@ -16,11 +16,15 @@ pipeline {
     agent { node('jkvo_staging_fe1') }
     stages {
         stage('Build'){
-            buildRepo()
+            steps {
+                buildRepo()
+            }
         }
 
         stage('Deploy'){
-            run()
+            steps {
+                run()
+            }
         }
     }
 }
