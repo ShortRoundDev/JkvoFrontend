@@ -13,9 +13,9 @@ def deployContainer(){
             -d \
             --name JkvoXyz \
             -p 80:5001 \
-            -e Database__Host=jkvo.xyz \
+            -e Database__Host=cstm.ink \
             -e Database__Username=root \
-            -e Database__Shards=1 \
+            -e Database__Shards=3 \
             -e Database__Password=$DB_PASSWORD \
             jkvo_fe'''
 }
