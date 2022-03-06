@@ -1,5 +1,3 @@
-FE_NODES = ["jkvo_staging_fe1"];
-
 def allNodes(Array nodes, Closure closure){
     for(n in nodes){
         node(n){
@@ -27,14 +25,14 @@ def run(){
 }
 
 pipeline {
-    agent none
+    agent jkvo_staging_fe1
     stages {
         stage('Build'){
-            allFe(this.&buildRepo)
+            buildRepo()
         }
 
         stage('Deploy'){
-            allFe(this.&run)
+            run()
         }
     }
 }
