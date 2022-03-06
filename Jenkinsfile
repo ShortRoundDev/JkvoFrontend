@@ -1,15 +1,3 @@
-def allNodes(Array nodes, Closure closure){
-    for(n in nodes){
-        node(n){
-            closure();
-        }
-    }
-}
-
-def allFe(Closure closure){
-    allNodes(FE_NODES, closure)
-}
-
 def buildRepo(){
     sh "rm -rf __Jkvo"
     sh "git clone https://github.com/shortrounddev/JkvoFrontend __Jkvo"
