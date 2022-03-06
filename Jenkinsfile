@@ -7,32 +7,44 @@ def buildRepo(){
     sh "rm -rf __Jkvo"
 }
 
+def deployContainer(){
+    sh "(docker stop JkvoXyz && docker container rm JkvoXyz) || true"
+    sh '''docker run \
+            -d \
+            --name JkvoXyz \
+            -p 80:5001 \
+            -e Database__Host=jkvo.xyz \
+            -e Database__Username=root \
+            -e Database__Shards=1 \
+            -e Database__Password=$DB_PASSWORD \
+            jkvo_fe'''
+}
+
+def runOnAll(Closure closure){
+    for(fe in ["jkvo_prod_fe1", "jkvo_prod_fe2", "jkvo_prod_fe3"]){
+        node(fe){
+            closure();
+        }
+    }
+}
+
 pipeline {
-    agent { node('jkvo_staging_fe1') }
+    agent none
     
     environment {
-        DB_PASSWORD = credentials('staging-db-password')
+        DB_PASSWORD = credentials('prod-db-password')
     }
 
     stages {
         stage('Build'){
             steps {
-                buildRepo()
+                runOnAll(this.&buildRepo);
             }
         }
 
         stage('Deploy'){
             steps {
-                sh "(docker stop JkvoXyz && docker container rm JkvoXyz) || true"
-                sh '''docker run \
-                        -d \
-                        --name JkvoXyz \
-                        -p 80:5001 \
-                        -e Database__Host=staging.shortrounddev.com \
-                        -e Database__Username=root \
-                        -e Database__Shards=1 \
-                        -e Database__Password=$DB_PASSWORD \
-                        jkvo_fe'''
+                runOnAll(this.&deployContainer);
             }
         }
     }
