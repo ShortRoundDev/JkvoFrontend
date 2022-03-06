@@ -9,11 +9,24 @@ def buildRepo(){
 
 def runJkvo(){
     sh "(docker stop JkvoXyz && docker container rm JkvoXyz) || true"
-    sh "docker run -d --name JkvoXyz -p 80:5001 jkvo_fe"
+    sh '''docker run \
+            -d \
+            --name JkvoXyz \
+            -p 80:5001 \
+            -e Database__Host=staging.shortrounddev.com \
+            -e Database__Username=root \
+            -e Database__Shards=1 \
+            -e Database__Password=$DB_Password \
+            jkvo_fe'''
 }
 
 pipeline {
     agent { node('jkvo_staging_fe1') }
+    
+    environment {
+        DB_PASSWORD = credentials('staging-db-password')
+    }
+
     stages {
         stage('Build'){
             steps {
