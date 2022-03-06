@@ -1,25 +1,23 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
+    position: relative;
+    min-height: 100%;
     background-color: #ffffff;
     opacity: 0.8;
     background-image: linear-gradient(#ebfbff 2px, transparent 2px), linear-gradient(90deg, #ebfbff 2px, transparent 2px), linear-gradient(#ebfbff 1px, transparent 1px), linear-gradient(90deg, #ebfbff 1px, #ffffff 1px);
     background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
     background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
 }
+
 #output{
     margin-top: 64px;
 }
@@ -29,7 +27,7 @@ body {
 }
 
 #outputbody:hover {
-  background: #c0f1e2
+    background: #c0f1e2
 }
 
 #copynotification {
@@ -45,7 +43,25 @@ body {
     animation-delay: 2s;
 }
 
+#containerId{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    color: #666;
+    font-family: monospace;
+    font-size: 12px;
+}
+
 @keyframes fade {
     from { opacity: 100%; }
     to { opacity: 0%; }
+}
+
+#icon {
+    width: 48px;
+    height: 48px;
+    
+    margin: auto;
+    vertical-align: middle; 
+    display: inline-block;
 }
