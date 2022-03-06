@@ -7,7 +7,7 @@ def buildRepo(){
     sh "rm -rf __Jkvo"
 }
 
-def run(){
+def runJkvo(){
     sh "(docker stop JkvoXyz && docker container rm JkvoXyz) || true"
     sh "docker run -d --name JkvoXyz -p 80:5001 jkvo_fe"
 }
@@ -23,7 +23,7 @@ pipeline {
 
         stage('Deploy'){
             steps {
-                run()
+                runJkvo()
             }
         }
     }
