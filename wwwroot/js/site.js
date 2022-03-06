@@ -26,6 +26,7 @@ function makeShortLink(event){
     })
     .then(data => data.json())
     .then(data => {
-        document.querySelector("#outputbody").innerHTML = `https://jkvo.xyz/${data.path}`;
+        let location = window.location;
+        document.querySelector("#outputbody").innerHTML = `${location.protocol}//${location.host}/${data.path}`;
     })
 }
