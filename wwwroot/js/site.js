@@ -27,6 +27,7 @@ function makeShortLink(event){
     .then(data => data.json())
     .then(data => {
         let location = window.location;
+        
         document.querySelector("#outputbody").innerHTML = `${location.protocol}//${location.host}/${data.path}`;
     })
 }
