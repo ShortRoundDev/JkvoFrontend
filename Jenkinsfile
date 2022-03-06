@@ -1,6 +1,6 @@
 def buildRepo(){
     sh "rm -rf __Jkvo"
-    sh "git clone https://github.com/shortrounddev/JkvoFrontend __Jkvo"
+    sh "git clone -b ${env.BRANCH_NAME} https://github.com/shortrounddev/JkvoFrontend __Jkvo"
     dir("__Jkvo"){
         sh "docker build -t jkvo_fe -f ./Dockerfile.prod ."
     }
